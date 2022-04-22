@@ -5,20 +5,20 @@
 class Kluctl < Formula
   desc "kluctl"
   homepage "https://kluctl.io/"
-  version "2.7.7"
+  version "2.7.8"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/kluctl/kluctl/releases/download/v2.7.7/kluctl_2.7.7_Darwin_x86_64.tar.gz"
-      sha256 "f7ae9fecb6b55c142b538e621685780f902a9ea6e0b74113524a8d71f2a1ac7d"
+      url "https://github.com/kluctl/kluctl/releases/download/v2.7.8/kluctl_2.7.8_Darwin_x86_64.tar.gz"
+      sha256 "bff9087ee3fea5694c72a38d361961233a418ed3cbea158c06c10f2249b06bbc"
 
       def install
         bin.install "kluctl"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/kluctl/kluctl/releases/download/v2.7.7/kluctl_2.7.7_Darwin_arm64.tar.gz"
-      sha256 "7013966f55c6fb46f109fc1916b4b49f84b0fb66eb1dab283fa0c641615a49c9"
+      url "https://github.com/kluctl/kluctl/releases/download/v2.7.8/kluctl_2.7.8_Darwin_arm64.tar.gz"
+      sha256 "180d083861e2f4fa75ef9e70e48ab0524f1e5b0a7a0231276f179013608a3732"
 
       def install
         bin.install "kluctl"
@@ -28,16 +28,16 @@ class Kluctl < Formula
 
   on_linux do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/kluctl/kluctl/releases/download/v2.7.7/kluctl_2.7.7_Linux_arm64.tar.gz"
-      sha256 "0df45073be51080031febf93afc2cf95f96c68910a8ca5e2db6ed1775412bd1d"
+      url "https://github.com/kluctl/kluctl/releases/download/v2.7.8/kluctl_2.7.8_Linux_arm64.tar.gz"
+      sha256 "6d70f836e8e9fe9b35adbac125a59d1a1b99673dcbc9c1d96f5d3203d4fe683f"
 
       def install
         bin.install "kluctl"
       end
     end
     if Hardware::CPU.intel?
-      url "https://github.com/kluctl/kluctl/releases/download/v2.7.7/kluctl_2.7.7_Linux_x86_64.tar.gz"
-      sha256 "bdc7235c706dd0dabb3af87f5d12821f89de35903a00aa36d78191fa457d7610"
+      url "https://github.com/kluctl/kluctl/releases/download/v2.7.8/kluctl_2.7.8_Linux_x86_64.tar.gz"
+      sha256 "8fe82eed58f98b13d10726b7e80523b4496554653aee78b1ed65835753c4305d"
 
       def install
         bin.install "kluctl"
