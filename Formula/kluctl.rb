@@ -5,20 +5,20 @@
 class Kluctl < Formula
   desc "kluctl"
   homepage "https://kluctl.io/"
-  version "2.8.0"
+  version "2.9.0"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/kluctl/kluctl/releases/download/v2.8.0/kluctl_v2.8.0_darwin_amd64.tar.gz"
-      sha256 "61235c8fada40b2b7666b15b4509a46050aa20b614c92fb7a6f0ae2a5c14a975"
+      url "https://github.com/kluctl/kluctl/releases/download/v2.9.0/kluctl_v2.9.0_darwin_amd64.tar.gz"
+      sha256 "4db003c1aaa3c7b856fc9e670d6924e22841ced5eabe8e067e1349b28c3b2216"
 
       def install
         bin.install "kluctl"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/kluctl/kluctl/releases/download/v2.8.0/kluctl_v2.8.0_darwin_arm64.tar.gz"
-      sha256 "e311890601bb28d9767c082c09a7253d1a7c062129db20fadc841f0dfe67c3ae"
+      url "https://github.com/kluctl/kluctl/releases/download/v2.9.0/kluctl_v2.9.0_darwin_arm64.tar.gz"
+      sha256 "61b6ddda5525a396e2082583d5e5c6bbaf27590ea0eadb84a52438646dd340dc"
 
       def install
         bin.install "kluctl"
@@ -27,17 +27,17 @@ class Kluctl < Formula
   end
 
   on_linux do
-    if Hardware::CPU.intel?
-      url "https://github.com/kluctl/kluctl/releases/download/v2.8.0/kluctl_v2.8.0_linux_amd64.tar.gz"
-      sha256 "f26457ba901e8d98dd76fbddbcc7eb7cd358693b661b2cbe7cfae9a382eb7e8b"
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/kluctl/kluctl/releases/download/v2.9.0/kluctl_v2.9.0_linux_arm64.tar.gz"
+      sha256 "0e105f79fa29163c1c9dff7bd93b04aad06f038fdc6f5bfb746933e97666730d"
 
       def install
         bin.install "kluctl"
       end
     end
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/kluctl/kluctl/releases/download/v2.8.0/kluctl_v2.8.0_linux_arm64.tar.gz"
-      sha256 "6fe5924189f3414e9abcd6b1408e23269f80367067fe3946ba0593d57be049ce"
+    if Hardware::CPU.intel?
+      url "https://github.com/kluctl/kluctl/releases/download/v2.9.0/kluctl_v2.9.0_linux_amd64.tar.gz"
+      sha256 "2c42e92ef0f64e0fec6b024d45560f74beec666fcf4afa4813948a1d062eeca4"
 
       def install
         bin.install "kluctl"
@@ -47,5 +47,14 @@ class Kluctl < Formula
 
   test do
     system "#{bin}/kluctl version"
+
+    bash_output = Utils.safe_popen_read(bin/"kluctl", "completion", "bash")
+    (bash_completion/"kluctl").write bash_output
+
+    zsh_output = Utils.safe_popen_read(bin/"kluctl", "completion", "zsh")
+    (zsh_completion/"_kluctl").write zsh_output
+
+    fish_output = Utils.safe_popen_read(bin/"kluctl", "completion", "fish")
+    (fish_completion/"kluctl.fish").write fish_output
   end
 end
