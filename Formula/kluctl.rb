@@ -5,20 +5,20 @@
 class Kluctl < Formula
   desc "kluctl"
   homepage "https://kluctl.io/"
-  version "2.10.1"
+  version "2.10.2"
 
   on_macos do
-    if Hardware::CPU.arm?
-      url "https://github.com/kluctl/kluctl/releases/download/v2.10.1/kluctl_v2.10.1_darwin_arm64.tar.gz"
-      sha256 "9cbcb600c75ef46cb29c25769feaffc8d25bfa836b3c193981036001b22d967f"
+    if Hardware::CPU.intel?
+      url "https://github.com/kluctl/kluctl/releases/download/v2.10.2/kluctl_v2.10.2_darwin_amd64.tar.gz"
+      sha256 "595d7f37b94fcb308e06de1ed85adddbd2fd713d5f58525adf70f3d8f710854d"
 
       def install
         bin.install "kluctl"
       end
     end
-    if Hardware::CPU.intel?
-      url "https://github.com/kluctl/kluctl/releases/download/v2.10.1/kluctl_v2.10.1_darwin_amd64.tar.gz"
-      sha256 "abc593632568fc58535c06882898472218567e4b553fc61323195e91c777930d"
+    if Hardware::CPU.arm?
+      url "https://github.com/kluctl/kluctl/releases/download/v2.10.2/kluctl_v2.10.2_darwin_arm64.tar.gz"
+      sha256 "2f33bdfbf2778fc94b6dc95ca9ec5bbf774dcb2518451318319f8d4a0984a67d"
 
       def install
         bin.install "kluctl"
@@ -27,17 +27,17 @@ class Kluctl < Formula
   end
 
   on_linux do
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/kluctl/kluctl/releases/download/v2.10.1/kluctl_v2.10.1_linux_arm64.tar.gz"
-      sha256 "4c4c4ee561bb30347b26925c23e0a64dfaadc8629365197244a5b05e323cb81b"
+    if Hardware::CPU.intel?
+      url "https://github.com/kluctl/kluctl/releases/download/v2.10.2/kluctl_v2.10.2_linux_amd64.tar.gz"
+      sha256 "66e2201adfb511dc93919ee51850f1489626fc2beefa6282a9e2bba3747458bf"
 
       def install
         bin.install "kluctl"
       end
     end
-    if Hardware::CPU.intel?
-      url "https://github.com/kluctl/kluctl/releases/download/v2.10.1/kluctl_v2.10.1_linux_amd64.tar.gz"
-      sha256 "53ed4c525f495c990339f91c90b22fa4d9aa75f5146f3a3a9adb4f869c701f59"
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/kluctl/kluctl/releases/download/v2.10.2/kluctl_v2.10.2_linux_arm64.tar.gz"
+      sha256 "208e4606afb06bee979159d3454bdaf562d79051b2bf5f17e168ed950ae5056c"
 
       def install
         bin.install "kluctl"
