@@ -5,56 +5,83 @@
 class Kluctl < Formula
   desc "kluctl"
   homepage "https://kluctl.io/"
-  version "2.17.1"
+  version "2.18.0"
 
   on_macos do
-    if Hardware::CPU.intel?
-      url "https://github.com/kluctl/kluctl/releases/download/v2.17.1/kluctl_v2.17.1_darwin_amd64.tar.gz"
-      sha256 "3f0bb843cdf8c7bba84713a4ea685015376c5188ced6bd1bec79f1ce42d3f1d8"
+    if Hardware::CPU.arm?
+      url "https://github.com/kluctl/kluctl/releases/download/v2.18.0/kluctl_v2.18.0_darwin_arm64.tar.gz"
+      sha256 "9e0d452c5e503f2ab15c75d23fc6d80e4ff14e3f50300d04028cf915860b2f00"
 
       def install
         bin.install "kluctl"
+
+        bash_output = Utils.safe_popen_read(bin/"kluctl", "completion", "bash")
+        (bash_completion/"kluctl").write bash_output
+
+        zsh_output = Utils.safe_popen_read(bin/"kluctl", "completion", "zsh")
+        (zsh_completion/"_kluctl").write zsh_output
+
+        fish_output = Utils.safe_popen_read(bin/"kluctl", "completion", "fish")
+        (fish_completion/"kluctl.fish").write fish_output
       end
     end
-    if Hardware::CPU.arm?
-      url "https://github.com/kluctl/kluctl/releases/download/v2.17.1/kluctl_v2.17.1_darwin_arm64.tar.gz"
-      sha256 "1723651e48e580fe3b4cb0d5cdbbb1bcb2e20c5e38e1a122731e47086cbc38bf"
+    if Hardware::CPU.intel?
+      url "https://github.com/kluctl/kluctl/releases/download/v2.18.0/kluctl_v2.18.0_darwin_amd64.tar.gz"
+      sha256 "a04766984ee5cf5fabba5fcfa8ecaecbb8ac392a9474e95c48ea9e15c169dd3a"
 
       def install
         bin.install "kluctl"
+
+        bash_output = Utils.safe_popen_read(bin/"kluctl", "completion", "bash")
+        (bash_completion/"kluctl").write bash_output
+
+        zsh_output = Utils.safe_popen_read(bin/"kluctl", "completion", "zsh")
+        (zsh_completion/"_kluctl").write zsh_output
+
+        fish_output = Utils.safe_popen_read(bin/"kluctl", "completion", "fish")
+        (fish_completion/"kluctl.fish").write fish_output
       end
     end
   end
 
   on_linux do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/kluctl/kluctl/releases/download/v2.17.1/kluctl_v2.17.1_linux_arm64.tar.gz"
-      sha256 "d983550cf495149de28a1e1693e4621fa629b4d74c142a71c665e2abef4ae4a0"
+      url "https://github.com/kluctl/kluctl/releases/download/v2.18.0/kluctl_v2.18.0_linux_arm64.tar.gz"
+      sha256 "72813e88e23479bae41e81a3347ab5c429281919160bc1e4016a14e7bbc515af"
 
       def install
         bin.install "kluctl"
+
+        bash_output = Utils.safe_popen_read(bin/"kluctl", "completion", "bash")
+        (bash_completion/"kluctl").write bash_output
+
+        zsh_output = Utils.safe_popen_read(bin/"kluctl", "completion", "zsh")
+        (zsh_completion/"_kluctl").write zsh_output
+
+        fish_output = Utils.safe_popen_read(bin/"kluctl", "completion", "fish")
+        (fish_completion/"kluctl.fish").write fish_output
       end
     end
     if Hardware::CPU.intel?
-      url "https://github.com/kluctl/kluctl/releases/download/v2.17.1/kluctl_v2.17.1_linux_amd64.tar.gz"
-      sha256 "484c6eb686fcbfe5b14791ce85e67f3ba57e9f6dbc763ed10ec74efdcd797037"
+      url "https://github.com/kluctl/kluctl/releases/download/v2.18.0/kluctl_v2.18.0_linux_amd64.tar.gz"
+      sha256 "b6048dbfa4669373357935b97678c93cb5a6945e14795cca8387afd147d9dabc"
 
       def install
         bin.install "kluctl"
+
+        bash_output = Utils.safe_popen_read(bin/"kluctl", "completion", "bash")
+        (bash_completion/"kluctl").write bash_output
+
+        zsh_output = Utils.safe_popen_read(bin/"kluctl", "completion", "zsh")
+        (zsh_completion/"_kluctl").write zsh_output
+
+        fish_output = Utils.safe_popen_read(bin/"kluctl", "completion", "fish")
+        (fish_completion/"kluctl.fish").write fish_output
       end
     end
   end
 
   test do
     system "#{bin}/kluctl version"
-
-    bash_output = Utils.safe_popen_read(bin/"kluctl", "completion", "bash")
-    (bash_completion/"kluctl").write bash_output
-
-    zsh_output = Utils.safe_popen_read(bin/"kluctl", "completion", "zsh")
-    (zsh_completion/"_kluctl").write zsh_output
-
-    fish_output = Utils.safe_popen_read(bin/"kluctl", "completion", "fish")
-    (fish_completion/"kluctl.fish").write fish_output
   end
 end
