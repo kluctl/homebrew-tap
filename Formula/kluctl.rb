@@ -10,7 +10,7 @@ class Kluctl < Formula
   on_macos do
     if Hardware::CPU.intel?
       url "https://github.com/kluctl/kluctl/releases/download/v2.20.0/kluctl_v2.20.0_darwin_amd64.tar.gz"
-      sha256 "4ee2f1afdd94a74bcdca778bc41125bc0872f504d15144eb756f387727b0eb1e"
+      sha256 "e284bfdbd75ce90e11815f24db24771dee1ac321eebe3acb10334d16c5fc9785"
 
       def install
         bin.install "kluctl"
@@ -27,7 +27,7 @@ class Kluctl < Formula
     end
     if Hardware::CPU.arm?
       url "https://github.com/kluctl/kluctl/releases/download/v2.20.0/kluctl_v2.20.0_darwin_arm64.tar.gz"
-      sha256 "9b46f17e4a06f3ef946531ab5995e6017927f506affbabac69a3d5f2c579b40b"
+      sha256 "f74c0f48f2244a602c2e891fa93d9da0e686141e2adce86a62dd7b5b73bd8098"
 
       def install
         bin.install "kluctl"
@@ -47,7 +47,7 @@ class Kluctl < Formula
   on_linux do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
       url "https://github.com/kluctl/kluctl/releases/download/v2.20.0/kluctl_v2.20.0_linux_arm64.tar.gz"
-      sha256 "a87ff7f50ff49f0cf798e2201959831d1aff1db7950a8dc869739f27d321606c"
+      sha256 "7d0273ce5bdbc696a42a913996bfc81d7edbb6b6735040a0a5583600ab1051c6"
 
       def install
         bin.install "kluctl"
@@ -64,7 +64,7 @@ class Kluctl < Formula
     end
     if Hardware::CPU.intel?
       url "https://github.com/kluctl/kluctl/releases/download/v2.20.0/kluctl_v2.20.0_linux_amd64.tar.gz"
-      sha256 "7007f2fa3e9617f0111e3c547a793491cc3bb2356d41c65bec72214e58150621"
+      sha256 "c425aa38fa847a8dd33a8fbbace2f86b8e0a241628bf747d240a3f42e9b3578e"
 
       def install
         bin.install "kluctl"
