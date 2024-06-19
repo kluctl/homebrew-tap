@@ -5,12 +5,12 @@
 class Kluctl < Formula
   desc "kluctl"
   homepage "https://kluctl.io/"
-  version "2.24.1"
+  version "2.25.0"
 
   on_macos do
-    if Hardware::CPU.intel?
-      url "https://github.com/kluctl/kluctl/releases/download/v2.24.1/kluctl_v2.24.1_darwin_amd64.tar.gz"
-      sha256 "a3981564f4bc6e484405e0aa94c9f6713a8c6a2906670c8e5a005ddeffbe7cda"
+    on_intel do
+      url "https://github.com/kluctl/kluctl/releases/download/v2.25.0/kluctl_v2.25.0_darwin_amd64.tar.gz"
+      sha256 "2df2f294e1cf7a50287c979e3a7d4ef0a39df57510d5f62cf61cbd5ba6f7b32b"
 
       def install
         bin.install "kluctl"
@@ -25,9 +25,9 @@ class Kluctl < Formula
         (fish_completion/"kluctl.fish").write fish_output
       end
     end
-    if Hardware::CPU.arm?
-      url "https://github.com/kluctl/kluctl/releases/download/v2.24.1/kluctl_v2.24.1_darwin_arm64.tar.gz"
-      sha256 "a651fa1c9d815a320e5a10a8585a9090505ad11c5792b366130cd5e69400a007"
+    on_arm do
+      url "https://github.com/kluctl/kluctl/releases/download/v2.25.0/kluctl_v2.25.0_darwin_arm64.tar.gz"
+      sha256 "f4aabe8f23fda4b3f14eafd5bf4145d1f6c9b06fbe86032689d06fddb557962e"
 
       def install
         bin.install "kluctl"
@@ -45,38 +45,42 @@ class Kluctl < Formula
   end
 
   on_linux do
-    if Hardware::CPU.intel?
-      url "https://github.com/kluctl/kluctl/releases/download/v2.24.1/kluctl_v2.24.1_linux_amd64.tar.gz"
-      sha256 "21c0ed35171ad83a3547ab11a5f8b60916c4146926c54847778d2b209411d54c"
+    on_intel do
+      if Hardware::CPU.is_64_bit?
+        url "https://github.com/kluctl/kluctl/releases/download/v2.25.0/kluctl_v2.25.0_linux_amd64.tar.gz"
+        sha256 "0ef80a285c73310614e3d952d79c4c643abf5425499956998a39e03d5f2bcaec"
 
-      def install
-        bin.install "kluctl"
+        def install
+          bin.install "kluctl"
 
-        bash_output = Utils.safe_popen_read(bin/"kluctl", "completion", "bash")
-        (bash_completion/"kluctl").write bash_output
+          bash_output = Utils.safe_popen_read(bin/"kluctl", "completion", "bash")
+          (bash_completion/"kluctl").write bash_output
 
-        zsh_output = Utils.safe_popen_read(bin/"kluctl", "completion", "zsh")
-        (zsh_completion/"_kluctl").write zsh_output
+          zsh_output = Utils.safe_popen_read(bin/"kluctl", "completion", "zsh")
+          (zsh_completion/"_kluctl").write zsh_output
 
-        fish_output = Utils.safe_popen_read(bin/"kluctl", "completion", "fish")
-        (fish_completion/"kluctl.fish").write fish_output
+          fish_output = Utils.safe_popen_read(bin/"kluctl", "completion", "fish")
+          (fish_completion/"kluctl.fish").write fish_output
+        end
       end
     end
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/kluctl/kluctl/releases/download/v2.24.1/kluctl_v2.24.1_linux_arm64.tar.gz"
-      sha256 "dea4fd557844fd0072b4b93d480bd9716dd5270c6870755d7da1c5015e9507c0"
+    on_arm do
+      if Hardware::CPU.is_64_bit?
+        url "https://github.com/kluctl/kluctl/releases/download/v2.25.0/kluctl_v2.25.0_linux_arm64.tar.gz"
+        sha256 "c819152baf8ccaaf602cb04d3e805f5ed5dc23911fb16b9b821654c44b733e49"
 
-      def install
-        bin.install "kluctl"
+        def install
+          bin.install "kluctl"
 
-        bash_output = Utils.safe_popen_read(bin/"kluctl", "completion", "bash")
-        (bash_completion/"kluctl").write bash_output
+          bash_output = Utils.safe_popen_read(bin/"kluctl", "completion", "bash")
+          (bash_completion/"kluctl").write bash_output
 
-        zsh_output = Utils.safe_popen_read(bin/"kluctl", "completion", "zsh")
-        (zsh_completion/"_kluctl").write zsh_output
+          zsh_output = Utils.safe_popen_read(bin/"kluctl", "completion", "zsh")
+          (zsh_completion/"_kluctl").write zsh_output
 
-        fish_output = Utils.safe_popen_read(bin/"kluctl", "completion", "fish")
-        (fish_completion/"kluctl.fish").write fish_output
+          fish_output = Utils.safe_popen_read(bin/"kluctl", "completion", "fish")
+          (fish_completion/"kluctl.fish").write fish_output
+        end
       end
     end
   end
