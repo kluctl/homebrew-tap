@@ -5,12 +5,12 @@
 class Kluctl < Formula
   desc "kluctl"
   homepage "https://kluctl.io/"
-  version "2.25.0"
+  version "2.25.1"
 
   on_macos do
     on_intel do
-      url "https://github.com/kluctl/kluctl/releases/download/v2.25.0/kluctl_v2.25.0_darwin_amd64.tar.gz"
-      sha256 "2df2f294e1cf7a50287c979e3a7d4ef0a39df57510d5f62cf61cbd5ba6f7b32b"
+      url "https://github.com/kluctl/kluctl/releases/download/v2.25.1/kluctl_v2.25.1_darwin_amd64.tar.gz"
+      sha256 "57114365a9a45b524f36304959d29cf26d20b285b01326115877cde2c1e1e173"
 
       def install
         bin.install "kluctl"
@@ -26,8 +26,8 @@ class Kluctl < Formula
       end
     end
     on_arm do
-      url "https://github.com/kluctl/kluctl/releases/download/v2.25.0/kluctl_v2.25.0_darwin_arm64.tar.gz"
-      sha256 "f4aabe8f23fda4b3f14eafd5bf4145d1f6c9b06fbe86032689d06fddb557962e"
+      url "https://github.com/kluctl/kluctl/releases/download/v2.25.1/kluctl_v2.25.1_darwin_arm64.tar.gz"
+      sha256 "786d871a87cb24b28adf2fb16eb4480ad835bbba75b4d80becaaa38be7bb0edc"
 
       def install
         bin.install "kluctl"
@@ -47,8 +47,8 @@ class Kluctl < Formula
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/kluctl/kluctl/releases/download/v2.25.0/kluctl_v2.25.0_linux_amd64.tar.gz"
-        sha256 "0ef80a285c73310614e3d952d79c4c643abf5425499956998a39e03d5f2bcaec"
+        url "https://github.com/kluctl/kluctl/releases/download/v2.25.1/kluctl_v2.25.1_linux_amd64.tar.gz"
+        sha256 "9d118114f2be8916d1c068f0279de8acdf6553d4b38b54d0fb36a2699c44bd5b"
 
         def install
           bin.install "kluctl"
@@ -66,8 +66,8 @@ class Kluctl < Formula
     end
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/kluctl/kluctl/releases/download/v2.25.0/kluctl_v2.25.0_linux_arm64.tar.gz"
-        sha256 "c819152baf8ccaaf602cb04d3e805f5ed5dc23911fb16b9b821654c44b733e49"
+        url "https://github.com/kluctl/kluctl/releases/download/v2.25.1/kluctl_v2.25.1_linux_arm64.tar.gz"
+        sha256 "4293457ce56054a6850b3a306707400efed7d885ce22d97473fe8657aef5e58f"
 
         def install
           bin.install "kluctl"
