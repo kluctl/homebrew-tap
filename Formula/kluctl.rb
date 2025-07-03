@@ -5,12 +5,12 @@
 class Kluctl < Formula
   desc "kluctl"
   homepage "https://kluctl.io/"
-  version "2.26.0"
+  version "2.27.0"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/kluctl/kluctl/releases/download/v2.26.0/kluctl_v2.26.0_darwin_amd64.tar.gz"
-      sha256 "3dbac0404008dda85dfdf169ce7686a98760118916765d3ba5f2840db19cf984"
+      url "https://github.com/kluctl/kluctl/releases/download/v2.27.0/kluctl_v2.27.0_darwin_amd64.tar.gz"
+      sha256 "f6be55904b06add3c2ab63d4b8c22f8fdcc659facd838f15c06f29fecc0618d0"
 
       def install
         bin.install "kluctl"
@@ -26,8 +26,8 @@ class Kluctl < Formula
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/kluctl/kluctl/releases/download/v2.26.0/kluctl_v2.26.0_darwin_arm64.tar.gz"
-      sha256 "8e1ad8f0651532feef3b22bd3d0ff1fb0e00c639a05b5c4d25f3e1ea1db7c0c9"
+      url "https://github.com/kluctl/kluctl/releases/download/v2.27.0/kluctl_v2.27.0_darwin_arm64.tar.gz"
+      sha256 "82115f1764914a2d43d8bf63ca4234eca339ad1c523fd9ec6cbf69d8c78d36f5"
 
       def install
         bin.install "kluctl"
@@ -45,42 +45,36 @@ class Kluctl < Formula
   end
 
   on_linux do
-    if Hardware::CPU.intel?
-      if Hardware::CPU.is_64_bit?
-        url "https://github.com/kluctl/kluctl/releases/download/v2.26.0/kluctl_v2.26.0_linux_amd64.tar.gz"
-        sha256 "542b9fe0bf2854eae87a4d09fbca814a9d0eb635e2e5b9ccb5d98270df99b211"
+    if Hardware::CPU.intel? and Hardware::CPU.is_64_bit?
+      url "https://github.com/kluctl/kluctl/releases/download/v2.27.0/kluctl_v2.27.0_linux_amd64.tar.gz"
+      sha256 "7b325b5c0e422da49bb54fb8a3ca3d7fddfcdeb220b9f0d4bc36625ece2eb9ae"
+      def install
+        bin.install "kluctl"
 
-        def install
-          bin.install "kluctl"
+        bash_output = Utils.safe_popen_read(bin/"kluctl", "completion", "bash")
+        (bash_completion/"kluctl").write bash_output
 
-          bash_output = Utils.safe_popen_read(bin/"kluctl", "completion", "bash")
-          (bash_completion/"kluctl").write bash_output
+        zsh_output = Utils.safe_popen_read(bin/"kluctl", "completion", "zsh")
+        (zsh_completion/"_kluctl").write zsh_output
 
-          zsh_output = Utils.safe_popen_read(bin/"kluctl", "completion", "zsh")
-          (zsh_completion/"_kluctl").write zsh_output
-
-          fish_output = Utils.safe_popen_read(bin/"kluctl", "completion", "fish")
-          (fish_completion/"kluctl.fish").write fish_output
-        end
+        fish_output = Utils.safe_popen_read(bin/"kluctl", "completion", "fish")
+        (fish_completion/"kluctl.fish").write fish_output
       end
     end
-    if Hardware::CPU.arm?
-      if Hardware::CPU.is_64_bit?
-        url "https://github.com/kluctl/kluctl/releases/download/v2.26.0/kluctl_v2.26.0_linux_arm64.tar.gz"
-        sha256 "38a8b4a1a04e5c99dceef18a5965a185b570dc9e8159385834526df17cd3d176"
+    if Hardware::CPU.arm? and Hardware::CPU.is_64_bit?
+      url "https://github.com/kluctl/kluctl/releases/download/v2.27.0/kluctl_v2.27.0_linux_arm64.tar.gz"
+      sha256 "aee6a10aa9472b362812645aa11ed10d8c2791a7ad67d9ed35b1356e039a2418"
+      def install
+        bin.install "kluctl"
 
-        def install
-          bin.install "kluctl"
+        bash_output = Utils.safe_popen_read(bin/"kluctl", "completion", "bash")
+        (bash_completion/"kluctl").write bash_output
 
-          bash_output = Utils.safe_popen_read(bin/"kluctl", "completion", "bash")
-          (bash_completion/"kluctl").write bash_output
+        zsh_output = Utils.safe_popen_read(bin/"kluctl", "completion", "zsh")
+        (zsh_completion/"_kluctl").write zsh_output
 
-          zsh_output = Utils.safe_popen_read(bin/"kluctl", "completion", "zsh")
-          (zsh_completion/"_kluctl").write zsh_output
-
-          fish_output = Utils.safe_popen_read(bin/"kluctl", "completion", "fish")
-          (fish_completion/"kluctl.fish").write fish_output
-        end
+        fish_output = Utils.safe_popen_read(bin/"kluctl", "completion", "fish")
+        (fish_completion/"kluctl.fish").write fish_output
       end
     end
   end
